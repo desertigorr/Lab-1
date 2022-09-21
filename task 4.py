@@ -40,20 +40,22 @@ with open('books.csv', 'r', encoding='cp1251') as f:
     id = 0
     # Переменная-счетчик записей для вывода (кол-во таких записей не должно превышать 20)
     count = 0
-
+    
     for row in table:
-        if id == id_list[0] and count < 19:
+        if id in id_list and count < 20:
             book_list.append(row)
-            id_list.pop(0)
+            id_list.remove(id)
             id += 1
             count += 1
         else:
             id += 1
+    
 
     # Выводим 20 рандомных записей
     for i in range(len(book_list)):
+        print(i+1, end='. ')
         print(str(book_list[i][3]) + '. '+str(book_list[i][1]) + ' - ' + str(book_list[i][6][6:10]))
-        file.write(str(book_list[i][3]) + '. '+str(book_list[i][1]) + ' - ' + str(book_list[i][6][6:10]))
+        file.write(str(i+1) + str(book_list[i][3]) + '. '+str(book_list[i][1]) + ' - ' + str(book_list[i][6][6:10]))
         file.write('\n')
 
 file.close()

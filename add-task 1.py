@@ -18,6 +18,7 @@ with open('books.csv', 'r', encoding='cp1251') as f:
             # Отбираем уникальные теги из временного массива в основной
             if not tag in tags_list:
                 tags_list.append(tag)
+                
         # Очищаем временный массив
         tags_temp = []
 
