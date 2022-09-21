@@ -2,7 +2,6 @@
 
 import csv
 
-
 with open('books.csv', 'r', encoding='cp1251') as f:
 
     table = csv.reader(f, delimiter=';')
