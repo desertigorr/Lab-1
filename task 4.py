@@ -8,7 +8,7 @@ import random
 row_count = 0
 
 
-file = open('result.txt', 'w')
+file = open('result.txt', 'w', encoding='utf-16')
 
 # Вычисляем кол-во строк в таблице и сохраняем значение в переменную
 with open('books.csv', 'r', encoding='cp1251') as f:
@@ -41,7 +41,13 @@ with open('books.csv', 'r', encoding='cp1251') as f:
     for i in id_list:
         count += 1
         table_row = table_list[i]
-        output = str(count) + '. ' + str(table_row[3]) + '. ' + table_row[1] + ' - ' + table_row[6][6:10] + '\n'
+
+        author = str(table_row[3])
+        if author == '':
+            author = 'Автор незивестен'
+        
+
+        output = str(count) + '. ' + author + '. ' + table_row[1] + ' - ' + table_row[6][6:10] + '\n'
         file.write(output)
     
 file.close()
