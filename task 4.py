@@ -53,8 +53,6 @@ with open('books.csv', 'r', encoding='cp1251') as f:
 
     # Выводим 20 рандомных записей
     for i in range(len(book_list)):
-        print(i+1, end='. ')
-        print(str(book_list[i][3]) + '. '+str(book_list[i][1]) + ' - ' + str(book_list[i][6][6:10]))
         file.write(str(i+1) + str(book_list[i][3]) + '. '+str(book_list[i][1]) + ' - ' + str(book_list[i][6][6:10]))
         file.write('\n')
 
