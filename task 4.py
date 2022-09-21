@@ -33,29 +33,17 @@ with open('books.csv', 'r', encoding='cp1251') as f:
     for i in range(20):
         id_list.append(random.randint(0, row_count))
 
-    # Сортируем по возрастанию, чтобы наполнить book_list за один проход по таблице
-    id_list = sorted(id_list)
+    # Преобразованная таблица в виде массива
+    table_list = list(table)
 
-    # Переменная для ID 
-    id = 0
-    # Переменная-счетчик записей для вывода (кол-во таких записей не должно превышать 20)
     count = 0
-    
-    for row in table:
-        if id in id_list and count < 20:
-            book_list.append(row)
-            id_list.remove(id)
-            id += 1
-            count += 1
-        else:
-            id += 1
-    
 
-    # Выводим 20 рандомных записей
-    for i in range(len(book_list)):
-        file.write(str(i+1) + str(book_list[i][3]) + '. '+str(book_list[i][1]) + ' - ' + str(book_list[i][6][6:10]))
-        file.write('\n')
-
+    for i in id_list:
+        count += 1
+        table_row = table_list[i]
+        output = str(count) + '. ' + str(table_row[3]) + '. ' + table_row[1] + ' - ' + table_row[6][6:10] + '\n'
+        file.write(output)
+    
 file.close()
 
 
